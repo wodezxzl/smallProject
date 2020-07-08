@@ -1,0 +1,577 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+body {
+  font-family: '微软雅黑';
+  font-size: 14px;
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+// 基本样式结束
+
+
+// 主要样式开始
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // 统一设置版心
+  .focus_content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  // 1.头部
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+
+    // 左边LOGO
+    .LOGO {
+      img {
+        margin-left: 30px;
+        opacity: .5;
+      }
+      img:hover {
+        opacity: 1;
+      }
+    }
+    // 中间搜索框 
+    .search {
+      position: absolute;
+      left: 24%;
+      top: 18px;
+      transform: translateX(-50%);
+      input {
+        outline: none;
+        box-sizing: border-box;
+        padding-left: 20px;
+        width: 400px;
+        height: 40px;
+        border-radius: 20px;
+        color: #fff;
+        border: 1px solid #ccc;
+        background-color: transparent;
+      }
+      input::-webkit-input-placeholder {
+        font-size: 16px;
+        color: #ccc;
+      }
+      button {
+        position: absolute;
+        left: 356px;
+        top: 4px;
+        width: 30px;
+        height: 30px;
+        outline: none;
+        border: none;
+        background: url('img/search.png') no-repeat 0 0;
+        background-size: cover;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    }
+    // 右边用户设置
+    .user_setting {
+      display: flex;
+      align-items: center;
+      margin-right: 60px;
+      li {
+        margin-right: 10px;
+      }
+      li:nth-child(n+4) {
+        opacity: .5;
+      }
+      li:hover {
+        opacity: 1;
+      }
+      // 下载客户端按钮 
+      .download {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        line-height: 28px;
+        text-align: center;
+        background-color: rgb(49, 194, 124);
+        border-radius: 15px;
+      }
+      // 用户图片样式
+      .user_img {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-image: url('img/user_img.jpg');
+        background-size: cover;
+      }
+    }
+  }
+
+  // 2.中间歌曲
+  main {
+    flex: 1;
+    width: 100%;
+    // 版心区
+    .focus_content {
+      display: flex;
+
+      // 左边歌曲列表区
+      .main_left_lists {
+        width: 70%;
+        height: 100%;
+      // 上面5个选项按钮
+      .option {
+        ul {
+          display: flex;
+          li {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            a {
+              width: 100px;
+              line-height: 28px;
+              text-align: center;
+              border: 2px solid rgba(255,255,255,.2);
+              border-radius: 5px;
+              i {
+                margin-right: 4px;
+                opacity: .4;
+              }
+            }
+            a:hover {
+              border: 2px solid rgba(255,255,255,1);
+            }
+            a:hover i{
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      // 下面歌曲列表
+      .song_lists {
+        // 第一列单独
+        .first_row {
+          margin-top: 20px;
+          ul {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            border-top: 1px solid rgba(255,255,255,.2);
+            li:nth-child(2) {
+              margin-left: 15px;
+            }
+            li:nth-child(3) {
+              margin-left: 492px;
+            }
+            li:nth-child(4) {
+              margin-left: 184px;
+            }
+          }
+        }
+        // 滚动条样式
+        ._mCS_1 .mCSB_dragger_bar {
+          width: 8px;
+        }
+        // 真正歌曲列表
+        .song_rows {
+          height: 430px;
+          overflow: auto;
+          ul {
+            display: flex;
+            align-items: center;
+            height: 50px;
+          }
+          // 鼠标在ul上时歌曲选项和删除按钮显示
+          ul:hover .song_option {
+            visibility: visible;
+          }
+          ul:hover .song_time i {
+            display: block;
+          }
+          ul:hover .song_time span{
+            visibility: hidden;
+          }
+          // 歌曲状态(编号或者播放中)
+          .song_status {
+            position: relative;
+            margin-right: 4px;
+            img {
+              // 播放中图片默认不显示
+              display: none;
+              position: absolute;
+              left: 0;
+              top: 20px;
+            }
+          }
+          // 歌曲名称
+          .song_name {
+            width: 340px;
+          }
+          // 歌曲选项
+          .song_option {
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            width: 160px;
+            i {
+              margin: 0 3px;
+              font-size: 36px;
+              opacity: .5;
+              transition: scale 0.3s;
+            };
+            i:first-child {
+              font-size: 34px;
+            }
+            i:nth-child(2) {
+              font-size: 38px;
+            }
+            // 鼠标置于其中一个上时放大
+            i:hover {
+              transform: scale(1.2);
+              opacity: 1;
+              cursor: pointer;
+            }
+          }
+          // 歌曲作者
+          .song_author {
+            width: 180px;
+          }
+          // 歌曲时长
+          .song_time {
+            position: relative;
+            flex: 1;
+            text-align: center;
+            span {
+              opacity: .5;
+            }
+            i {
+              display: none;
+              position: absolute;
+              right: 34px;
+              top: 2px;
+              font-size: 36px;
+              color: rgba(255,255,255,.7);
+              opacity: .5;
+              transition: scale 0.3s;
+            }
+            // 鼠标置于删除按钮上时放大
+            i:hover {
+              transform: scale(1.2);
+              opacity: 1;
+              cursor: pointer;
+            }
+          }
+        }
+        // 设置分割细线
+        ul {
+          border-bottom: 1px solid rgba(255,255,255,.2);
+        }
+        // 设置除了第一个正方形和歌曲选项,删除选项以外的透明度
+        li:not(:nth-child(1)):not(.song_option):not(.song_time) {
+          opacity: .5;
+        }
+        // 设置前面的正方形选框
+        .song_section {
+          position: relative;
+          margin-right: 6px;
+          opacity: .3;
+          i {
+            font-size: 20px;
+          }
+          i:last-child {
+            display: none;
+            position: absolute;
+            // position: static;
+            left: 0;
+            top: 0;
+            // 两个图标之间有一定大小相差
+            // line-height: 50.8px;
+          }
+        }
+        .song_section:hover {
+          opacity: 1;
+        }
+        // 禁止选中文字 
+        li {
+          user-select: none;
+        }
+      }
+    }
+
+     // 右边歌曲信息区
+     .main_right_info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 30%;
+      height: 100%;
+
+      // 歌曲图片
+      .song_img {
+        position: relative;
+        div {
+          width: 180px;
+          height: 180px;
+          background: url('img/user_img.jpg');
+          background-size: cover;
+        }
+      }
+      .song_img::after {
+        content: '';
+        position: absolute;
+        left: 3px;
+        top: 0;
+        width: 210px;
+        height: 180px;
+        background: url('img/img_bg.png');
+      }
+
+      // 歌曲信息
+      .song_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        div {
+          line-height: 30px;
+          span,a {
+            opacity: .6;
+          }
+          .right:hover {
+            opacity: 1;
+          }
+        }
+      }
+      
+      // 歌词
+      .lyric {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 50px;
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+  }
+
+  // 3.底部播放
+  footer{
+    width: 100%;
+    height: 120px;
+    .focus_content {
+      display: flex;
+      align-items: center;
+      // 切换歌曲按钮
+      .toggle_song {
+        margin-right: 40px;
+        a {
+          margin-right: 20px;
+        }
+      }
+      // 进度条
+      .progress {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 30px;
+        width: 580px;
+        height: 40px;
+        .word {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 6px;
+          width: 100%;
+          opacity: .6;
+          // 禁止选中文字 
+          user-select: none;
+        }
+        // 控制进度条
+        .progress_control {
+          position: relative;
+          margin-bottom: 6px;
+          width: 100%;
+          height: 1px;
+          background-color: rgba(255,255,255,.3);
+          .now_progress {
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: 70%;
+            height: 2px;
+            background-color: #fff;
+          }
+          .dot {
+            position: absolute;
+            left: 396px;
+            top: -5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+          }
+        }
+      }
+      // 其他按钮
+      .other_button {
+        a {
+          margin-right: 12px;
+        }
+        a:first-child {
+          position: relative;
+          i:nth-child(2) {
+            font-size: 28px;
+          }
+          i:nth-child(3) {
+            font-size: 30px;
+            vertical-align: -4px;
+          }
+          i:nth-child(4) {
+            font-size: 28px;
+          }
+          i:not(:first-child) {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: -10px;
+          }
+        }
+        // 下载
+        a:nth-child(3) {
+          i {
+            font-size: 28px;
+          }
+        }
+        // 评论
+        a:nth-child(4) {
+          position: relative;
+          margin-right: 22px;
+          .comment_num {
+            position: absolute;
+            left: 16px;
+            top: -10px;
+            font-size: 10px;
+            font-weight: 700;
+          }
+        }
+        // 模式切换按钮
+        .two_mode {
+          display: inline-block;
+          position: relative;
+          bottom: 5px;
+          width: 70px;
+          height: 24px;
+          border-radius: 12px;
+          border: 2px solid #fff;
+          .mode {
+            margin-left: 12px;
+            line-height: 24px;
+          }
+          .toggle_mode {
+            position: absolute;
+            left: 46px;
+            top: 0;
+            display: inline-block;
+            width: 24px;
+            line-height: 24px;
+            font-size: 8px;
+            text-align: center;
+            border-radius: 50%;
+            color: rgb(107, 107, 107);
+            background-color: #fff;
+          }
+        }
+      }
+      // 音量调节
+      .volume {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          display: inline-block;
+          margin-right: 4px;
+        }
+        .progress_control {
+          position: relative;
+          width: 100px;
+          height: 1px;
+          background-color: rgba(255,255,255,.3);
+          .now_progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 2px;
+            background-color: #fff;
+          }
+          .dot {
+            position: absolute;
+            left: 46px;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+          }
+        }
+      }
+      // 设置统一按钮大小
+      i{
+        font-size: 24px;
+      }
+    }
+  }
+
+  // 4.背景
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    // 用户图片模糊处理
+    .bg_img {
+      width: 100%;
+      height: 100%;
+      background: url('img/user_img.jpg');
+      background-size: cover;
+      filter: blur(80px);
+    }
+    // 图片之上加一层遮罩
+    .mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.2);
+    }
+  }
+}

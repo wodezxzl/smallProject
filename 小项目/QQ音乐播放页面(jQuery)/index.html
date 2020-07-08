@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QQ音乐播放页面</title>
+  <link rel="icon" href="img/QQ_favicon.ico" type="image/x-icon">
+  <script src="jquery-1.12.4.js"></script>
+  <script src="scroll-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="Icon/iconfont.css">
+  <link rel="stylesheet" href="scroll-plugin/jquery.mCustomScrollbar.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!-- 1.头部 -->
+  <header>
+    <!-- 左边LOGO -->
+    <a href="javascript;:" class="LOGO"><img src="img/QQ_logo.png" alt="QQ音乐"></a>
+    <!-- 中间搜索框 -->
+    <div class="search">
+      <input type="text" name="search" placeholder="搜索">
+      <button></button>
+    </div>
+    <!-- 右边用户设置 -->
+    <ul class="user_setting">
+      <li>QQ音乐，千万高品质曲库尽享</li>
+      <li>
+        <a href="javascript:;" class="download">
+          <i class="iconfont">&#xe605;</i>
+          客户端下载
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;" class="user_img"></a>
+      </li>
+      <li>
+        <a href="javascript:;">清欢无味</a>
+      </li>
+      <li>
+        <a href="javascript:;">设置</a>
+      </li>
+    </ul>
+  </header>
+
+  <!-- 2.中间歌曲 -->
+  <main>
+    <div class="focus_content">
+
+      <!-- 左边歌曲列表区 -->
+      <div class="main_left_lists">
+          <!-- 上面选项 -->
+        <div class="option">
+          <ul>
+            <li><a href="javascript:;"><i class="iconfont">&#xe602;</i><span>收藏</span></a></li>
+            <li><a href="javascript:;"><i class="iconfont">&#xe66e;</i><span>添加到</span></a></li>
+            <li><a href="javascript:;"><i class="iconfont">&#xe601;</i><span>下载</span></a></li>
+            <li><a href="javascript:;"><i class="iconfont">&#xe73f;</i><span>删除</span></a></li>
+            <li><a href="javascript:;"><i class="iconfont">&#xe625;</i><span>清空列表</span></a></li>
+          </ul>
+        </div>
+
+        <!-- 下面歌曲列表 -->
+        <div class="song_lists">
+          <!-- 第一列单独 -->
+          <div class="first_row">
+            <ul>
+              <li class="song_section">
+                <i class="iconfont icon-zhengfangxing no_select"></i>
+                <i class="iconfont icon-zhengfangxingxuanzhongzhuangtai total_select"></i>
+              </li>
+              <li>歌曲</li>
+              <li>歌手</li>
+              <li>时长</li>
+            </ul>
+          </div>
+          <!-- 真正歌曲列表 -->
+          <div class="song_rows" data-mcs-theme="minimal-dark">
+          </div>
+        </div>
+      </div>
+
+      <!-- 右边歌曲信息区 -->
+      <div class="main_right_info">
+
+        <!-- 歌曲图片 -->
+        <a href="javascript:;" class="song_img">
+          <div></div>
+        </a>
+
+        <!-- 歌曲信息 -->
+        <div class="song_info">
+          <div class="song_name">
+            <span class="left">歌曲名:</span>
+            <a href="javascript:;" class="right">呓语</a>
+          </div>
+          <div class="singer_name">
+            <span class="left">歌手名:</span>
+            <a href="javascript:;" class="right">毛不易</a>
+          </div>
+          <div class="album_name">
+            <span class="left">专辑名:</span>
+            <a href="javascript:;" class="right">我是唱作人</a>
+          </div>
+        </div>
+
+        <!-- 歌词 -->
+        <div class="lyric">
+          <span>难道是因为有话</span>
+          <span>难道是因为有话</span>
+          <span>难道是因为有话</span>
+          <span>难道是因为有话</span>
+          <span>难道是因为有话</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 3.底部播放 -->
+  <footer>
+    <div class="focus_content">
+
+      <!-- 切换歌曲按钮 -->
+      <div class="toggle_song">
+        <a href="javascript:;"><i class="iconfont">&#xe617;</i></a>
+        <a href="javascript:;"><i class="iconfont">&#xe643;</i></a>
+        <a href="javascript:;"><i class="iconfont">&#xe64e;</i></a>
+      </div>
+
+      <!-- 进度条 -->
+      <div class="progress">
+        <div class="word">
+          <div class="author_info">
+            <span>呓语 -</span>
+            <span>毛不易</span>
+          </div>
+          <div class="time">
+            <span class="now_time">03:44</span>
+            <span class="total_time">/ 04:55</span>
+          </div>
+        </div>
+        <div class="progress_control">
+          <div class="now_progress"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- 其他按钮 -->
+      <div class="other_button">
+        <a href="javascript:;">
+          <i class="iconfont">&#xe634;</i>
+          <i class="iconfont">&#xe668;</i>
+          <i class="iconfont">&#xe620;</i>
+          <i class="iconfont">&#xe615;</i>
+        </a>
+        <!-- 收藏 -->
+        <a href="javascript:;"><i class="iconfont">&#xe602;</i></a>
+        <!-- 下载 -->
+        <a href="javascript:;"><i class="iconfont">&#xe78d;</i></a>
+        <!-- 评论 -->
+        <a href="javascript:;">
+          <i class="iconfont">&#xe604;</i>
+          <span class="comment_num">999+</span>
+        </a>
+        <!-- 模式切换按钮 -->
+        <a href="javascript:;" class="two_mode">
+          <span class="mode">纯净</span>
+          <span class="toggle_mode">OFF</span>
+        </a>
+      </div>
+
+      <!-- 音量调节 -->
+      <div class="volume">
+        <i class="iconfont">&#xe6e8;</i>
+        <div class="progress_control">
+          <div class="now_progress"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 4.背景 -->
+  <div class="bg">
+    <div class="bg_img"></div>
+    <div class="mask"></div>
+  </div>
+</body>
+</html>
